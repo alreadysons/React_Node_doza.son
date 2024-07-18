@@ -2,13 +2,18 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-require('dotenv').config(); // dotenv 패키지로 환경 변수 로드
+require('dotenv').config(); // dotenv 패키지 로드
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// MongoDB URI
-const uri = process.env.MONGODB_URI; // 환경 변수에서 MongoDB URI 가져오기
+// MongoDB URI from environment variables
+const uri = process.env.MONGODB_URI;
+
+if (!uri) {
+  console.error('MongoDB URI is not defined in environment variables.');
+  process.exit(1);
+}
 
 // Middleware
 app.use(bodyParser.json());
@@ -20,7 +25,8 @@ mongoose.connect(uri)
     console.log("Connected to MongoDB");
 
     // Define routes here
-    app.use('/posts', require('./routes/posts')(mongoose.connection));
+    const postsRouter = require('./routes/posts')(mongoose.connection);
+    app.use('/posts', postsRouter);
 
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);

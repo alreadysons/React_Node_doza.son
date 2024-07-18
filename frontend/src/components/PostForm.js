@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { createPost, fetchPostById, updatePost } from '../api/posts';
+import { Container, Form, Button } from 'react-bootstrap';
 
 function PostForm() {
   const { id } = useParams();
@@ -13,6 +14,9 @@ function PostForm() {
       fetchPostById(id).then(response => {
         setTitle(response.data.title);
         setContent(response.data.content);
+      }).catch(error => {
+        console.error('Error fetching post:', error);
+        alert('Error fetching post');
       });
     }
   }, [id]);
@@ -20,36 +24,62 @@ function PostForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const post = { title, content };
-    console.log('Submitting post:', post);
 
     try {
       if (id) {
-        await updatePost(id, post);
-        navigate(`/post/${id}`); // 문자열 보간을 백틱으로 감쌈
+        const response = await updatePost(id, post);
+        if (response.status === 200) {
+          alert('수정되었습니다.');
+          navigate('/');
+        } else {
+          console.error('Error updating post:', response);
+          alert('Error: ' + (response.data?.message || 'Unknown error'));
+        }
       } else {
         const response = await createPost(post);
-        navigate(`/post/${response.data._id}`); // 새로 생성된 글의 ID를 사용하여 이동
+        if (response.status === 201) {
+          navigate(`/post/${response.data._id}`);
+        } else {
+          console.error('Error creating post:', response);
+          alert('Error: ' + (response.data?.message || 'Unknown error'));
+        }
       }
     } catch (error) {
-      console.error('Error while submitting post:', error);
+      console.error('Error while submitting post:', error.response || error.message || error);
+      alert('Error: ' + (error.response?.data?.message || error.message || 'Unknown error'));
     }
   };
 
   return (
-    <div>
-      <h1>{id ? 'Edit Post' : 'New Post'}</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Title</label>
-          <input value={title} onChange={(e) => setTitle(e.target.value)} />
-        </div>
-        <div>
-          <label>Content</label>
-          <textarea value={content} onChange={(e) => setContent(e.target.value)} />
-        </div>
-        <button type="submit">{id ? 'Update' : 'Create'}</button>
-      </form>
-    </div>
+    <Container>
+      <h1 className="mt-4">{id ? 'Edit Post' : 'New Post'}</h1>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group className="mb-3" controlId="formTitle">
+          <Form.Label>Title</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formContent">
+          <Form.Label>Content</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={5}
+            placeholder="Enter content"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
+        </Form.Group>
+
+        <Button variant="primary" type="submit">
+          {id ? 'Update' : 'Create'}
+        </Button>
+      </Form>
+    </Container>
   );
 }
 

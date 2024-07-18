@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { fetchPostById, deletePost } from '../api/posts';
+import { Container, Button } from 'react-bootstrap';
 
 function PostDetail() {
   const { id } = useParams();
@@ -18,7 +19,10 @@ function PostDetail() {
 
   const handleDelete = () => {
     deletePost(id)
-      .then(() => navigate('/'))
+      .then(() => {
+        alert('삭제되었습니다.');
+        navigate('/');
+      })
       .catch(error => {
         console.error('Error deleting post:', error);
       });
@@ -27,12 +31,14 @@ function PostDetail() {
   if (!post) return <div>Loading...</div>;
 
   return (
-    <div>
-      <h1>{post.title}</h1>
-      <p>{post.content}</p>
-      <button onClick={handleDelete}>Delete</button>
-      <button onClick={() => navigate(`/edit/${id}`)}>Edit</button>
-    </div>
+    <Container>
+      <h1 className="mt-4">{post.title}</h1>
+      <p className="mt-4">{post.content}</p>
+      <div className="mt-4">
+        <Button variant="danger" onClick={handleDelete}>Delete</Button>
+        <Button variant="primary" as={Link} to={`/edit/${id}`} className="ms-2">Edit</Button>
+      </div>
+    </Container>
   );
 }
 
