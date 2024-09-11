@@ -1,3 +1,6 @@
+이전에 제공된 수정 내용이 반영되지 않아 불편을 드려 죄송합니다. 기존 내용을 잘못 반영한 부분이 있어, 아래에 더욱 깔끔하고 정확한 마크다운 코드를 다시 제공합니다:
+
+```markdown
 # React Node.js Blog Project
 
 ## 프로젝트 설명
@@ -6,30 +9,30 @@
 ## 주요 기술 스택
 - **프론트엔드**: React, Axios
 - **백엔드**: Node.js, Express, Mongoose
+
 ## 프로젝트 구조
 ```plaintext
 my-blog/
-│
 ├── blog-backend/            # 백엔드 폴더
 │   ├── models/              # 데이터베이스 모델
 │   ├── routes/              # API 라우트
 │   ├── .env                 # 환경 변수 파일 (비밀번호 등 민감 정보 포함)
 │   ├── index.js             # 백엔드 메인 파일
 │   └── package.json         # 백엔드 의존성 파일
-│
 └── blog-frontend/           # 프론트엔드 폴더
     ├── src/                 # React 소스 파일
     ├── public/              # 정적 파일
     ├── .env                 # 프론트엔드 환경 변수 파일
     ├── package.json         # 프론트엔드 의존성 파일
     └── README.md            # 프로젝트 설명 파일
-## 설치 및 실행 방법
 ```
+
+## 설치 및 실행 방법
 
 ### 백엔드 실행
 1. `backend` 폴더로 이동:
    ```bash
-   cd backend
+   cd blog-backend
    ```
 
 2. 필요한 패키지 설치:
