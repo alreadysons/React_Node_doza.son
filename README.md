@@ -1,4 +1,3 @@
-아래는 `README.md`를 마크다운 언어로 작성한 전체 내용입니다. 이 코드를 복사하여 `README.md` 파일로 저장하시면 됩니다.
 # React Node.js Blog Project
 
 ## 프로젝트 설명
@@ -7,10 +6,8 @@
 ## 주요 기술 스택
 - **프론트엔드**: React, Axios
 - **백엔드**: Node.js, Express, Mongoose
-- **데이터베이스**: MongoDB (MongoDB Atlas)
-
 ## 프로젝트 구조
-
+```plaintext
 my-blog/
 │
 ├── blog-backend/            # 백엔드 폴더
@@ -26,8 +23,8 @@ my-blog/
     ├── .env                 # 프론트엔드 환경 변수 파일
     ├── package.json         # 프론트엔드 의존성 파일
     └── README.md            # 프로젝트 설명 파일
-
 ## 설치 및 실행 방법
+```
 
 ### 백엔드 실행
 1. `backend` 폴더로 이동:
