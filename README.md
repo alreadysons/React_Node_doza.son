@@ -9,14 +9,14 @@
 
 ## 프로젝트 구조
 ```plaintext
-my-blog/
-├── blog-backend/            # 백엔드 폴더
+react_node_doza.son/
+├── backend/            # 백엔드 폴더
 │   ├── models/              # 데이터베이스 모델
 │   ├── routes/              # API 라우트
 │   ├── .env                 # 환경 변수 파일 (비밀번호 등 민감 정보 포함)
 │   ├── index.js             # 백엔드 메인 파일
 │   └── package.json         # 백엔드 의존성 파일
-└── blog-frontend/           # 프론트엔드 폴더
+└── frontend/           # 프론트엔드 폴더
     ├── src/                 # React 소스 파일
     ├── public/              # 정적 파일
     ├── .env                 # 프론트엔드 환경 변수 파일
@@ -29,7 +29,7 @@ my-blog/
 ### 백엔드 실행
 1. `backend` 폴더로 이동:
    ```bash
-   cd blog-backend
+   cd backend
    ```
 
 2. 필요한 패키지 설치:
@@ -52,7 +52,7 @@ my-blog/
 ### 프론트엔드 실행
 1. `frontend` 폴더로 이동:
    ```bash
-   cd ../blog-frontend
+   cd ../frontend
    ```
 
 2. 필요한 패키지 설치:
