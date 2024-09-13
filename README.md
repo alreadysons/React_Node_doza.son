@@ -1,4 +1,3 @@
-아래는 `README.md`를 마크다운 언어로 작성한 전체 내용입니다. 이 코드를 복사하여 `README.md` 파일로 저장하시면 됩니다.
 # React Node.js Blog Project
 
 ## 프로젝트 설명
@@ -7,25 +6,23 @@
 ## 주요 기술 스택
 - **프론트엔드**: React, Axios
 - **백엔드**: Node.js, Express, Mongoose
-- **데이터베이스**: MongoDB (MongoDB Atlas)
 
 ## 프로젝트 구조
-
-my-blog/
-│
-├── blog-backend/            # 백엔드 폴더
+```plaintext
+react_node_doza.son/
+├── backend/            # 백엔드 폴더
 │   ├── models/              # 데이터베이스 모델
 │   ├── routes/              # API 라우트
 │   ├── .env                 # 환경 변수 파일 (비밀번호 등 민감 정보 포함)
 │   ├── index.js             # 백엔드 메인 파일
 │   └── package.json         # 백엔드 의존성 파일
-│
-└── blog-frontend/           # 프론트엔드 폴더
+└── frontend/           # 프론트엔드 폴더
     ├── src/                 # React 소스 파일
     ├── public/              # 정적 파일
     ├── .env                 # 프론트엔드 환경 변수 파일
     ├── package.json         # 프론트엔드 의존성 파일
     └── README.md            # 프로젝트 설명 파일
+```
 
 ## 설치 및 실행 방법
 
@@ -55,7 +52,7 @@ my-blog/
 ### 프론트엔드 실행
 1. `frontend` 폴더로 이동:
    ```bash
-   cd ../blog-frontend
+   cd ../frontend
    ```
 
 2. 필요한 패키지 설치:
@@ -84,7 +81,3 @@ my-blog/
 
 ## 기여
 - 이 프로젝트에 기여하고 싶다면 Issue 또는 PR을 통해 참여해 주세요.
-
-## 라이선스
-MIT License
-```
