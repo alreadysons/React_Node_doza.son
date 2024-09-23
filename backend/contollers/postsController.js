@@ -1,5 +1,4 @@
 const Post = require('../models/Post');
-const mongoose = require('mongoose');
 
 // 모든 게시글 가져오기
 exports.getAllPosts = async (req, res) => {

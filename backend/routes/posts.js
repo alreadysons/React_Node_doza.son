@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const postsController = require('../contollers/postsController');
 const getPost = require('../middleware/getPost');
-const errorHandler = require('../middleware/errorHandler'); // 에러 핸들러 임포트
 
 
 // 모든 게시글 가져오기
